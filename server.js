@@ -5,9 +5,9 @@ const http = require('http');
 // create a http server
 const server = http.createServer((request, response) => {
     response.writeHead(200, {
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain'
     });
-    response.end(JSON.stringify({ message: 'Hello NodeJS' }));
+    response.end("hello nodejs");
 });
 
 // start the http server
