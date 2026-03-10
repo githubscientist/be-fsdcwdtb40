@@ -17,3 +17,11 @@ Versioning:
 - The second value (0) indicates a minor release, which includes new features and improvements that are backward compatible.
 
 - The third value (0) indicates a patch release, which includes bug fixes and minor improvements that are backward compatible.
+
+NodeJS Module Types:
+
+1. Built-in Modules: These are modules that come with NodeJS and provide core functionality, such as file system operations, HTTP server creation, and more. Examples include `fs`, `http`, and `path`.
+
+2. Third-Party Modules: These are modules that are created by the community and can be installed using npm (Node Package Manager). They provide additional functionality and can be easily integrated into your application. Examples include `express`, `mongoose`, and `nodemon`.
+
+3. Custom Modules: These are modules that you create yourself to organize your code and functionality. You can create custom modules by exporting functions, objects, or classes from a JavaScript file and then importing them into other files as needed.

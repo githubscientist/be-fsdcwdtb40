@@ -7,7 +7,7 @@ const server = http.createServer((request, response) => {
     response.writeHead(200, {
         'Content-Type': 'application/json'
     });
-    response.end(JSON.stringify({ message: "Hello, World!" }));
+    response.end(JSON.stringify({ message: "Welcome!" }));
 });
 
 // start the http server
