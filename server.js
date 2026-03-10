@@ -5,19 +5,9 @@ const http = require('http');
 // create a http server
 const server = http.createServer((request, response) => {
     response.writeHead(200, {
-        'Content-Type': 'text/html'
+        'Content-Type': 'application/json'
     });
-    response.end(`
-        <!doctype html>
-        <html>
-            <head>
-                <title>Test NodeJS API Server</title>
-            </head>
-            <body>
-                <h1>Hello, World!</h1>
-            </body>
-        </html>
-        `);
+    response.end(JSON.stringify({ message: "Hello, World!" }));
 });
 
 // start the http server
