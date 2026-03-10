@@ -4,7 +4,10 @@ const http = require('http');
 
 // create a http server
 const server = http.createServer((request, response) => {
-    response.end("Response from NodeJS Server");
+    response.writeHead(200, {
+        'Content-Type': 'application/json'
+    });
+    response.end(JSON.stringify({ message: 'Hello NodeJS' }));
 });
 
 // start the http server
