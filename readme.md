@@ -25,3 +25,8 @@ NodeJS Module Types:
 2. Third-Party Modules: These are modules that are created by the community and can be installed using npm (Node Package Manager). They provide additional functionality and can be easily integrated into your application. Examples include `express`, `mongoose`, and `nodemon`.
 
 3. Custom Modules: These are modules that you create yourself to organize your code and functionality. You can create custom modules by exporting functions, objects, or classes from a JavaScript file and then importing them into other files as needed.
+
+## fs module
+
+- fs: file system module
+- It provides an API for interacting with the file system, allowing you to read, write, and manipulate files and directories.
