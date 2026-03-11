@@ -1,16 +1,20 @@
-// import the http module
-// in nodejs, imports happens through require() function
-const http = require('http');
+// 1. import express library
+const express = require('express');
 
-// create a http server
-const server = http.createServer((request, response) => {
-    response.writeHead(200, {
-        'Content-Type': 'application/json'
-    });
-    response.end(JSON.stringify({ message: "Welcome!" }));
+// 2. create an express application
+const app = express();
+
+// 3. setup routes for the application
+app.get("/", (req, res) => {
+    res.json({ message: 'hello, nodejs!' });
 });
 
-// start the http server
-server.listen(3001, "127.0.0.1", () => {
-    console.log('server is running at http://127.0.0.1:3001 ...');
+// 4. start the express application
+app.listen(3001, (error) => {
+    if (error) {
+        console.log('error starting the server:', error.message);
+        return;
+    }
+
+    console.log('server listening at http://localhost:3001');
 });

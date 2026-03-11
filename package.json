@@ -26,5 +26,8 @@
   "homepage": "https://github.com/githubscientist/be-fsdcwdtb40#readme",
   "devDependencies": {
     "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
