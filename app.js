@@ -5,8 +5,8 @@ const express = require('express');
 const app = express();
 
 // setup routes for the application
-app.get("/", (req, res) => {
-    res.json({ message: 'hello, world!' });
+app.get("/todos", (req, res) => {
+    res.json({ message: 'All the todos!' });
 });
 
 // export the application
