@@ -30,3 +30,25 @@ NodeJS Module Types:
 
 - fs: file system module
 - It provides an API for interacting with the file system, allowing you to read, write, and manipulate files and directories.
+
+## asynchronous vs synchronous programming
+
+- Asynchronous programming allows you to perform tasks without blocking the main thread, while synchronous programming blocks the main thread until a task is completed.
+
+In asynchronous programming, you can use callbacks, promises, or async/await to handle the completion of the synchronous tasks.
+
+## Event Loop
+
+- The event loop is a fundamental part of NodeJS that allows it to handle asynchronous operations. It continuously checks for events and executes the corresponding callbacks when they are ready. This allows NodeJS to perform non-blocking I/O operations and handle multiple requests concurrently without blocking the main thread.
+
+## Callstack
+
+- The call stack is a data structure that keeps track of the function calls in a program. When a function is called, it is added to the call stack, and when it returns, it is removed from the stack.
+
+## Promises
+
+- Promises are a resulting object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. They provide a cleaner and more manageable way to handle asynchronous code compared to callbacks.
+
+## Async/Await
+
+- Async/Await are used to write asynchronous code in a more synchronous and readable manner. The `async` keyword is used to declare a function as asynchronous, and the `await` keyword is used to wait for a promise to resolve before proceeding with the execution of the code.
