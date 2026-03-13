@@ -4,11 +4,11 @@ const auth = {
     isAuthenticated: async (req, res, next) => {
         try {
             // get the token
-            const token = req.headers['authorization']?.split(' ')[1];
+            const token = req.cookies?.token;
 
             // check if the token is present
             if (!token) {
-                return res.status(500).json({ message: 'No token provided' });
+                return res.status(500).json({ message: 'user not logged in' });
             }
 
             // is the token valid
@@ -16,7 +16,7 @@ const auth = {
 
             // if the decoded is null, token is invalid
             if (!decoded) {
-                return res.status(500).json({ message: 'invalid token' });
+                return res.status(500).json({ message: 'unauthorized access' });
             }
 
             // get the user id from the token

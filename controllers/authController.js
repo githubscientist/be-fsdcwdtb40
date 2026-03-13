@@ -63,9 +63,16 @@ const authController = {
             // if login successful, generate a token
             const token = await jwt.sign({ id: user[0]._id }, process.env.JWT_SECRET, { expiresIn: '3h' });
 
+            // store the token in the browser's cookies
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure: false,
+                sameSite: 'Strict'
+            });
+
             // user already in the system
             // password is also correct
-            return res.status(200).json({ message: 'login successful', token: token });
+            return res.status(200).json({ message: 'login successful' });
         } catch (error) {
             return res.status(500).json({ message: `login failed: ${error.message}` });
         }
@@ -83,6 +90,16 @@ const authController = {
 
         } catch (error) {
             return res.status(500).json({ message: `error fetching user data: ${error.message}` });
+        }
+    },
+    logout: async (req, res) => {
+        try {
+            // clear the cookie from the browser
+            res.clearCookie('token');
+
+            return res.status(200).json({ message: 'logout successful' });
+        } catch (error) {
+            return res.status(500).json({ message: `logout failed: ${error.message}` });
         }
     }
 }

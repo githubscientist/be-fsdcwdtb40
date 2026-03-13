@@ -2,6 +2,7 @@
 const express = require('express');
 const todoRouter = require('./routes/todoRoutes');
 const authRouter = require('./routes/authRoutes');
+const cookieParser = require('cookie-parser');
 
 // create an express application
 const app = express();
@@ -9,6 +10,9 @@ const app = express();
 // entry point for the request
 // parse the request body
 app.use(express.json());
+
+// parse the cookies
+app.use(cookieParser());
 
 // setup routes for the application
 app.use("/todos", todoRouter);
