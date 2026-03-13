@@ -1,5 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const authController = {
     registerUser: async (req, res) => {
@@ -58,11 +60,29 @@ const authController = {
                 return res.status(400).json({ message: 'password incorrect' });
             }
 
+            // if login successful, generate a token
+            const token = await jwt.sign({ id: user[0]._id }, process.env.JWT_SECRET, { expiresIn: '3h' });
+
             // user already in the system
             // password is also correct
-            return res.status(200).json({ message: 'login successful' });
+            return res.status(200).json({ message: 'login successful', token: token });
         } catch (error) {
             return res.status(500).json({ message: `login failed: ${error.message}` });
+        }
+    },
+    me: async (req, res) => {
+        try {
+            // get the userId of the logged in user from the request object
+            const userId = req.userId;
+
+            // get the user id from the token
+            const user = await User.findById(userId).select('-password -__v');
+
+            // return the currently logged in user
+            return res.status(200).json({ message: 'user logged in', user: user });
+
+        } catch (error) {
+            return res.status(500).json({ message: `error fetching user data: ${error.message}` });
         }
     }
 }

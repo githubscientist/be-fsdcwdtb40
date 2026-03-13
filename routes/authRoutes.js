@@ -1,9 +1,14 @@
 const express = require('express');
-const { registerUser, loginUser } = require('../controllers/authController');
+const { registerUser, loginUser, me } = require('../controllers/authController');
+const { isAuthenticated } = require('../middlewares/auth');
 
 const authRouter = express.Router();
 
+// public routes
 authRouter.post("/register", registerUser);
 authRouter.post("/login", loginUser);
+
+// protected routes: user should be logged in
+authRouter.post("/me", isAuthenticated, me);
 
 module.exports = authRouter;
