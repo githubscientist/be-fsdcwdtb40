@@ -35,6 +35,35 @@ const authController = {
         } catch (error) {
             return res.status(500).json({ message: `user registration failed: ${error.message}` });
         }
+    },
+    loginUser: async (req, res) => {
+        try {
+            // get the details from the request
+            const { email, password } = req.body;
+
+            // get the user with this email from the database
+            const user = await User.find({ email });
+
+            // check if the user already registered
+            if (user.length == 0) {
+                // no such user
+                return res.status(500).json({ message: "user not registered" });
+            }
+
+            // check if the password matches
+            const isPasswordValid = await bcrypt.compare(password, user[0].password);
+
+            if (!isPasswordValid) {
+                // password incorrect
+                return res.status(400).json({ message: 'password incorrect' });
+            }
+
+            // user already in the system
+            // password is also correct
+            return res.status(200).json({ message: 'login successful' });
+        } catch (error) {
+            return res.status(500).json({ message: `login failed: ${error.message}` });
+        }
     }
 }
 
