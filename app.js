@@ -3,6 +3,7 @@ const express = require('express');
 const todoRouter = require('./routes/todoRoutes');
 const authRouter = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
+const logger = require('./middlewares/logger');
 
 // create an express application
 const app = express();
@@ -13,6 +14,9 @@ app.use(express.json());
 
 // parse the cookies
 app.use(cookieParser());
+
+// log the request
+app.use(logger);
 
 // setup routes for the application
 app.use("/todos", todoRouter);
