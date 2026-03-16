@@ -1,4 +1,5 @@
 const Todo = require('../models/todo');
+const User = require('../models/user');
 
 const todoController = {
     getAllTodos: async (req, res) => {
@@ -17,14 +18,27 @@ const todoController = {
             // get the data from the request body
             const { title, description } = req.body;
 
+            // get the logged in user's userId from the request object
+            const userId = req.userId;
+
             // create a new model object using the received data
             const newTodo = new Todo({
                 title,
-                description
+                description,
+                user: userId
             });
 
             // save the new todo object in the database
             const savedTodo = await newTodo.save();
+
+            // get the logged in user data
+            const user = await User.findById(userId);
+
+            // push the newly created todo id to the todos array in user object
+            user.todos.push(savedTodo._id);
+
+            // update the user object
+            await user.save();
 
             return res.status(200).json({ message: "todo created successfully", data: savedTodo });
         } catch (error) {
