@@ -52,3 +52,23 @@ In asynchronous programming, you can use callbacks, promises, or async/await to 
 ## Async/Await
 
 - Async/Await are used to write asynchronous code in a more synchronous and readable manner. The `async` keyword is used to declare a function as asynchronous, and the `await` keyword is used to wait for a promise to resolve before proceeding with the execution of the code.
+
+## Event Loop, CallStack, Event Queue
+
+- All these work together inside the NodeJS runtime to manage the execution of asynchronous code (callbacks, promises, async/await) and ensure that the main thread is not blocked while waiting for operations to complete.
+
+- The call stack keeps track of function calls (i.e., stores the execution context of functions), while the event loop continuously checks for events and executes the corresponding callbacks when they are ready. The event queue holds the callbacks that are waiting to be executed once the call stack is empty. This allows NodeJS to handle multiple requests concurrently without blocking the main thread.
+
+- JavaScript is a single-threaded and synchronous language
+
+### Types of API's
+
+1. REST API: REST (Representational State Transfer) is an architectural style for designing networked applications. It uses HTTP methods (GET, POST, PUT, DELETE) to perform operations on resources, which are typically represented as JSON or XML.
+
+2. GraphQL API: GraphQL is a query language for APIs that allows clients to request only the data they need. It provides a more flexible and efficient way to interact with APIs compared to REST.
+
+3. SOAP API: SOAP (Simple Object Access Protocol) is a protocol for exchanging structured information in web services. It uses XML for message format and relies on other application layer protocols, such as HTTP or SMTP, for message negotiation and transmission.
+
+4. gRPC API: gRPC is a high-performance, open-source framework for building remote procedure call (RPC) APIs. It uses Protocol Buffers (protobuf) as the interface definition language and supports multiple programming languages.
+
+5. Restful API: A RESTful API is an API that adheres to the principles of REST. It is designed to be stateless, scalable, and easy to use, making it a popular choice for building web services and applications.

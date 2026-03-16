@@ -6,6 +6,9 @@ require('dotenv').config();
 const authController = {
     registerUser: async (req, res) => {
         try {
+            // if no users in the system
+            // if this is the first user
+            // create the user as an admin
             // get the details from the request body
             const { name, email, password } = req.body;
 
@@ -27,6 +30,15 @@ const authController = {
                 email,
                 password: hashedPassword
             });
+
+            // check if this user is the first user
+            // query to fetch all the users
+            const users = await User.find();
+
+            if (users.length == 0) {
+                // add the role field to the newUser object
+                newUser.role = 'admin';
+            }
 
             // save the new user in the database
             const savedUser = await newUser.save();

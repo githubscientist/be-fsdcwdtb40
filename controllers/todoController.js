@@ -88,7 +88,7 @@ const todoController = {
 
             await Todo.findByIdAndDelete(id);
 
-            res.status(200).json({ message: 'todo deletion successful ' });
+            res.status(200).json({ message: 'todo deletion successful' });
         } catch (error) {
             return res.status(500).json({
                 message: `delete todo failed: ${error.message}`
