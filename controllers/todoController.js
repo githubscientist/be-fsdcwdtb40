@@ -4,7 +4,7 @@ const User = require('../models/user');
 const todoController = {
     getAllTodos: async (req, res) => {
         try {
-            const todos = await Todo.find({}, { "__v": 0 });
+            const todos = await Todo.find({}, { "__v": 0 }).populate('user', 'name email -_id');
 
             return res.status(200).json(todos);
         } catch (error) {
