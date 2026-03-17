@@ -5,11 +5,17 @@ const authRouter = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const logger = require('./middlewares/logger');
 const errorRoute = require('./middlewares/errorRoute');
+const cors = require('cors');
 
 // create an express application
 const app = express();
 
 // entry point for the request
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+
 // parse the request body
 app.use(express.json());
 

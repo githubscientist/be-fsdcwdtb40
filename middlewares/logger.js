@@ -4,7 +4,7 @@ const logger = async (req, res, next) => {
     res.on("finish", () => {
         console.log('Request Received...')
         console.log('At:', new Date(time).toISOString());
-        console.log('URL:', `http://localhost:3001/${req.originalUrl}`);
+        console.log('URL:', `${req.originalUrl}`);
         console.log('Method:', req.method);
         console.log('Body:', JSON.stringify(req.body));
         console.log('Cookies:', JSON.stringify(req.cookies));
