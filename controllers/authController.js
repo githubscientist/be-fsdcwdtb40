@@ -78,8 +78,8 @@ const authController = {
             // store the token in the browser's cookies
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: false,
-                sameSite: 'Strict'
+                secure: true,
+                sameSite: 'none'
             });
 
             // user already in the system
